@@ -6,7 +6,7 @@ Beginner tutorials and for help on Compute Canada's High Performance Computer.
 ## Contents
 
 
-   * [Basics](01-basics/01-basics.md)
+   * [Getting Started](01-getting-started/01-getting-started.md) - Start with the basics of Compute Canada HPC system
    * [Table of contents](#table-of-contents)
    * [Installation](#installation)
    * [Usage](#usage)
