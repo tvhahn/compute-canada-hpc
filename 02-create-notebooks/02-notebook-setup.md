@@ -26,7 +26,7 @@ The tutorial is based on:
      
    > :memo: **Note:** The Compute Canada (CC) HPC is run in a UNIX (Linux) environment. You interact with it using typed commands. CC has a useful Wiki introducing Linux ([here](https://docs.computecanada.ca/wiki/Linux_introduction)). There are also many good resources online, like this [command cheatsheat (pdf) from fosswire](https://files.fosswire.com/2007/08/fwunixref.pdf).
 
-2. **Create and Activate a Virtual Environment**
+2. **Create and activate a virtual environment**
 
    Create a virtual environment that contains all the requisite Python applications to get a Jupyter Notebook up-and-running. The `virtualenv` tool allows you to easily install, and manage, Python packages.
 
@@ -40,7 +40,7 @@ The tutorial is based on:
      - "bin" folders, in Linux, contain ready to run  programs
      - To deactivate a virtual environment, use the command `deactivate`
 
-3. **Install the Python Packages**
+3. **Install the python packages**
 
    Install the packages we need to open up a Jupyter notebook and do data analysis.
    
@@ -51,8 +51,37 @@ The tutorial is based on:
         > :memo: **Note:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and not overload the login node.
      
    * Install Jupyter Lab, which we'll use to run notebooks: `pip install --no-index jupyterlab`
-   * Create a 
+   
+4. **Create a script to launch Jupyter Lab** 
 
+   Use nano to create a bash script that we'll call upon to open up a Jupyter Lab session.
+
+   * Create a script in your virtual environment, in the bin folder: `nano $VIRTUAL_ENV/bin/notebook.sh`
+
+   * This opens up the nano text editor, so that we can create the bash script (see the [Youtube video](https://youtu.be/5yCUDqAbBUk?t=969) for more details):
+
+       ```bash
+       #!/bin/bash
+       unset XDG_RUNTIME_DIR
+       jupyter-lab --ip $(hostname -f) --no-browser
+       ```
+
+       Press ctrl-O to save, ctrl-X to exit. 
+
+   * Back in your home directory, change the user privledges of the `notebook.sh` that you just created. This is needed so that we can run the script in the bin folder: `chmod u+x $VIRTUAL_ENV/bin/notebook.sh `
+   * Now install the Lmod: `pip install --no-index jupyterlmod`
+
+5. **Create an allocation to run Jupyter Lab**
+
+   * ```
+     salloc --time=1:0:0 --ntasks=1 --cpus-per-task=2 --mem-per-cpu=1024M --account=def-mechefsk srun $VIRTUAL_ENV/bin/notebook.sh
+     ```
+     
+     * Allocate 1 hour for 1 task, using 2 cpus and 1024 MB of RAM/CPU. Allocated on the 
+     
+   * When you have the allocation, 
+   
+6. **SSH tunnel from your local computer into the Jupyter Notebook**
 
 
 
