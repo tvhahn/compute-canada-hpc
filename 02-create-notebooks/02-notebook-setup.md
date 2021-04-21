@@ -17,7 +17,7 @@ The tutorial is based on:
 
    Open your terminal client and login with your Compute Canada username.
 
-   * Login: `<your-username>@graham.computecanada.ca`
+   * Login: `ssh -Y <your-username>@graham.computecanada.ca`
 
    * Enter your password at the prompt.
 
@@ -38,10 +38,21 @@ The tutorial is based on:
      - From now on, the`jupyter1` virtual environment will depend on loading the `scipy-stack/2020b` module first.
    - Activate the virtual environment you just created: `source ~/jupyter1/bin/activate`
      - "bin" folders, in Linux, contain ready to run  programs
+     - To deactivate a virtual environment, use the command `deactivate`
 
 3. **Install the Python Packages**
 
    Install the packages we need to open up a Jupyter notebook and do data analysis.
+   
+   * Install [scikit-learn](https://scikit-learn.org/stable/index.html): `pip install --no-index sklearn`
+     
+     :warning: Make sure you have the module `scipy-stack/2020b` loaded (via `module load scipy-stack/2020b` )
+     
+        > :memo: **Note:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and not overload the login node.
+     
+   * Install Jupyter Lab, which we'll use to run notebooks: `pip install --no-index jupyterlab`
+   * Create a 
+
 
 
 
