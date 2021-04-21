@@ -18,8 +18,12 @@ The tutorial is based on:
    Open your terminal client and login with your Compute Canada username.
 
    * Login: `<your-username>@graham.computecanada.ca`
+
    * Enter your password at the prompt.
+
    * You should now be logged in!
+
+     
    > :memo: **Note:** The Compute Canada (CC) HPC is run in a UNIX (Linux) environment. You interact with it using typed commands. CC has a useful Wiki introducing Linux ([here](https://docs.computecanada.ca/wiki/Linux_introduction)). There are also many good resources online, like this [command cheatsheat (pdf) from fosswire](https://files.fosswire.com/2007/08/fwunixref.pdf).
 
 2. **Create and Activate a Virtual Environment**
@@ -39,7 +43,7 @@ The tutorial is based on:
 
    Install the packages we need to open up a Jupyter notebook and do data analysis.
 
-   - 
+
 
 > :memo: **Note:** 
 
