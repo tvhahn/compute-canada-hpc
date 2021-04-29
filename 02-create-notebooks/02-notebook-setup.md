@@ -7,6 +7,8 @@ The tutorial is based on:
 - Compute Canada wiki page on Jupyter Notebook ([here](https://docs.computecanada.ca/wiki/JupyterNotebook))
 - Youtube video from Sharcnet
 
+
+
 ## Prerequisites
 
 - `Windows` - Make sure you have a terminal client, like [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) installed on your computer. If you are running Linux or MacOS, a terminal client is installed by default.
@@ -24,7 +26,7 @@ The tutorial is based on:
    * You should now be logged in!
 
      
-   > :memo: **Note:** The Compute Canada (CC) HPC is run in a UNIX (Linux) environment. You interact with it using typed commands. CC has a useful Wiki introducing Linux ([here](https://docs.computecanada.ca/wiki/Linux_introduction)). There are also many good resources online, like this [command cheatsheat (pdf) from fosswire](https://files.fosswire.com/2007/08/fwunixref.pdf).
+   > :memo: **Note:** The Compute Canada (CC) HPC is run in a Linux environment. You interact with it using typed commands. CC has a useful Wiki introducing Linux ([here](https://docs.computecanada.ca/wiki/Linux_introduction)). There are also many good resources online, like this [command cheatsheat (pdf) from fosswire](https://files.fosswire.com/2007/08/fwunixref.pdf). SciNet has a course on "The Linux Shell" (see their [training page](https://support.scinet.utoronto.ca/education/browse.php)).
 
 2. **Create and activate a virtual environment**
 
@@ -46,9 +48,9 @@ The tutorial is based on:
    
    * Install [scikit-learn](https://scikit-learn.org/stable/index.html): `pip install --no-index sklearn`
      
-     :warning: Make sure you have the module `scipy-stack/2020b` loaded (via `module load scipy-stack/2020b` )
+     > :warning: **Warning:** Make sure you have the module `scipy-stack/2020b` loaded (via `module load scipy-stack/2020b` )
      
-        > :memo: **Note:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and not overload the login node.
+        > :bulb: **Tip:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and not overload the login node.
      
    * Install Jupyter Lab, which we'll use to run notebooks: `pip install --no-index jupyterlab`
    
@@ -79,11 +81,11 @@ The tutorial is based on:
      
      * Allocate 1 hour for 1 task, using 2 cpus and 1024 MB of RAM/CPU. Allocated on the
      
-      :warning:Try not to allocate more than you need so that the resources can be efficiently used between users.
+       > :warning: **Warning:** Try not to allocate more than you need so that the resources can be efficiently used between users.
      
    * When you have the allocation, you should see something like this:
    
-     ![terminal_notebook](./img/terminal_notebook.png)
+     ![terminal_notebook](./images/terminal_notebook.png)
    
 6. **SSH tunnel from your local computer into the Jupyter Notebook**
 
@@ -100,9 +102,30 @@ The tutorial is based on:
 
    * It will ask you for your login credentials. Fill that in.
 
-   * Then on local browser, put link to jupyter lab with access token, like: `http://localhost:8888/?token=<token>`. Or, you can copy the link from your terminal (or click it if your terminal client allows you to).
+   * Then on local browser, copy the link to Jupyter lab with the access token, like: `http://localhost:8888/?token=<token>`. Or, you can copy the link from your terminal (or click it if your terminal client allows you to).
 
+7. **Run Notebooks**
+
+   Now you can make and run notebooks! Notebooks are a great way to explore data, and prototype code. As an example, if you are doing deep learning with PyTorch, this would be a good workflow (from [pytorch-style guide](https://github.com/IgorSusmelj/pytorch-styleguide)):
+
+   > 1. Start with a Jupyter notebook
+   > 2. Explore the data. Prototype models.
+   > 3. Build your classes/ methods inside cells of the notebook
+   > 4. Move your code to python scripts
+   > 5. Train / deploy on server (Compute Canada in our case)
+>
+   
+   | **Jupyter Notebook** | **Python Scripts** |
+   |----------------------|--------------------|
+   | + Exploration | + Running longer jobs without interruption |
+   | + Debugging | + Easy to track changes with git |
+   | - Can become a huge file| - Debugging mostly means rerunning the whole script|
+   | - Can be interrupted (don't use for long training) | |
+| - Prone to errors and become a mess | |
+   
    
 
-> :memo: **Note:** 
+> :bulb: **Tip:** Git is an important tool in modern software development. Start using it today! Get yourself a [github](https://github.com/) account. [Download git](https://git-scm.com/download/win) (if you're on Windows). Here's a simple git guide that I use almost every day: [git - the simple guide](http://rogerdudler.github.io/git-guide/)
+
+> :memo: **Note:* You can also run your IDE (interactive developer environment), such as VS Code, on the Compute Canada system. Same with Matlab!
 
