@@ -33,9 +33,9 @@ with zipfile.ZipFile(folder_processed_data / 'data_processed.zip', 'r') as zip_r
 # folder_models = Path("models/")
 # Path("models/").mkdir(parents=True, exist_ok=True)
 # folder_models = Path("models/")  # folder for saved models
-
-Path('~/scratch/models').mkdir(parents=True, exist_ok=True)
-folder_models = Path('~/scratch/models')
+home_dir = Path.home()
+Path(home_dir / 'scratch/models').mkdir(parents=True, exist_ok=True)
+folder_models = home_dir / 'scratch/models'
 
 # current_dir = Path.cwd()
 # # processed_data = current_dir.parent.parent / 'data/processed/2020_05_20_xy_54_checkfluid'
