@@ -33,9 +33,10 @@ The tutorial is based on:
    Create a virtual environment that contains all the requisite Python applications to get a Jupyter Notebook up-and-running. The `virtualenv` tool allows you to easily install, and manage, Python packages.
 
    - Go to your home directory. The `cd` command takes you to your home directory.
+   - Optional: load Python 3.7 `module load python/3.7`
    - Load the SciPy stack module: `module load scipy-stack/2020b`
      - The `scipy-stack` module includes commonly used scientific computing and data science libraries in a one-stop-shop, like Numpy, Pandas, SciPy. You can read more about modules and how to use them on the CC [wiki page on the topic](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en).
-     - Use the `module list` command to see which modules you currently have loaded in your environment.
+     - Use the `module list` command to see which modules you currently have loaded in your environment. Use `module unload <module_name>` to unload a module.
    - Create the virtual environment in your home directory: `virtualenv ~/jupyter1` 
      - From now on, the`jupyter1` virtual environment will depend on loading the `scipy-stack/2020b` module first.
    - Activate the virtual environment you just created: `source ~/jupyter1/bin/activate`

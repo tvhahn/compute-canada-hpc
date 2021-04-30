@@ -1,18 +1,14 @@
 import numpy as np
-import scipy.io as sio
-from sklearn.utils import shuffle
-import pathlib
 from pathlib import Path
 import pandas as pd
-import os
 import datetime
 import random
 import h5py
+import zipfile
 
 import tensorflow as tf
 from tensorflow import keras
 
-from sklearn.utils import shuffle
 from sklearn.model_selection import ParameterSampler
 
 
@@ -21,7 +17,6 @@ from scipy.stats import uniform
 import traceback
 
 
-import data_prep
 import threshold
 from tcn import TCN
 
@@ -30,6 +25,10 @@ from tcn import TCN
 # )  # raw data folder that holds the .zip .mat files for milling data
 
 folder_processed_data = Path("data/processed/")  # processed data folder
+
+# extract zip file of processed data
+with zipfile.ZipFile(folder_processed_data / 'data_processed.zip', 'r') as zip_ref:
+    zip_ref.extractall(folder_processed_data)
 
 # folder_models = Path("models/")
 # Path("models/").mkdir(parents=True, exist_ok=True)
