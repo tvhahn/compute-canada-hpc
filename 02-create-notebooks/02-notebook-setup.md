@@ -5,7 +5,7 @@ In this tutorial we will learn how to get a Jupyter Notebook running on your loc
 The tutorial is based on:
 
 - Compute Canada wiki page on Jupyter Notebook ([here](https://docs.computecanada.ca/wiki/JupyterNotebook))
-- Youtube video from Sharcnet
+- Youtube video from Sharcnet ([here](https://youtu.be/5yCUDqAbBUk))
 
 
 
@@ -53,6 +53,8 @@ The tutorial is based on:
         > :bulb: **Tip:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and not overload the login node.
      
    * Install Jupyter Lab, which we'll use to run notebooks: `pip install --no-index jupyterlab`
+   
+   * Install TensorFlow 2.0 (we'll be using it in the notebook): `pip install --no-index tensorflow`
    
 4. **Create a script to launch Jupyter Lab** 
 
@@ -114,15 +116,15 @@ The tutorial is based on:
    > 4. Move your code to python scripts
    > 5. Train / deploy on server (Compute Canada in our case)
 >
-   
-   | **Jupyter Notebook** | **Python Scripts** |
-   |----------------------|--------------------|
-   | + Exploration | + Running longer jobs without interruption |
-   | + Debugging | + Easy to track changes with git |
-   | - Can become a huge file| - Debugging mostly means rerunning the whole script|
-   | - Can be interrupted (don't use for long training) | |
+
+| **Jupyter Notebook** | **Python Scripts** |
+|----------------------|--------------------|
+| + Exploration | + Running longer jobs without interruption |
+| + Debugging | + Easy to track changes with git |
+| - Can become a huge file| - Debugging mostly means rerunning the whole script|
+| - Can be interrupted (don't use for long training) | |
 | - Prone to errors and become a mess | |
-   
+
    
 
 > :bulb: **Tip:** Git is an important tool in modern software development. Start using it today! Get yourself a [github](https://github.com/) account. [Download git](https://git-scm.com/download/win) (if you're on Windows). Here's a simple git guide that I use almost every day: [git - the simple guide](http://rogerdudler.github.io/git-guide/)

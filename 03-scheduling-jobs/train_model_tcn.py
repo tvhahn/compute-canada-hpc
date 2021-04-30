@@ -36,7 +36,7 @@ folder_processed_data = Path("data/processed/")  # processed data folder
 # folder_models = Path("models/")  # folder for saved models
 
 Path('~/scratch/models').mkdir(parents=True, exist_ok=True)
-folder_models = Path('/home/tvhahn/scratch/models')
+folder_models = Path('~/scratch/models')
 
 # current_dir = Path.cwd()
 # # processed_data = current_dir.parent.parent / 'data/processed/2020_05_20_xy_54_checkfluid'
@@ -365,7 +365,7 @@ def model_fit(
 
 
 # Input the number of iterations you want to search over
-random_search_iterations = 500
+random_search_iterations = 5
 
 # random seed value from system input
 ransdom_seed_input = random.randint(0,9999)
@@ -382,7 +382,7 @@ p_bvae_grid = {
 }
 
 # epochs
-epochs = 5000
+epochs = 10
 
 
 # folder to save models in
