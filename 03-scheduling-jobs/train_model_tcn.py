@@ -381,7 +381,7 @@ p_bvae_grid = {
 }
 
 # epochs
-epochs = 10
+epochs = 2
 
 
 # folder to save models in
