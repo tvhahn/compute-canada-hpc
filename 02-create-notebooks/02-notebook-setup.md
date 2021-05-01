@@ -17,46 +17,47 @@ The tutorial is based on:
 
 1. **Login to Compute Canada** 
 
-   Open your terminal client and login with your Compute Canada username.
+   Open your terminal client and login with your Compute Canada user name.
 
    * Login: `ssh -Y <your-username>@graham.computecanada.ca`
 
    * Enter your password at the prompt.
 
-   * You should now be logged in!
+   * You should now be logged in! You are in the login node.
 
-     
    > :memo: **Note:** The Compute Canada (CC) HPC is run in a Linux environment. You interact with it using typed commands. CC has a useful Wiki introducing Linux ([here](https://docs.computecanada.ca/wiki/Linux_introduction)). There are also many good resources online, like this [command cheatsheat (pdf) from fosswire](https://files.fosswire.com/2007/08/fwunixref.pdf). SciNet has a course on "The Linux Shell" (see their [training page](https://support.scinet.utoronto.ca/education/browse.php)).
+
+   > :warning: **Warning:** Don't use the login node for computationally intensive tasks (you may get banned). The login node is for compilation and other tasks not expected to consume more than about 10 CPU-minutes and about 4 gigabytes of RAM. Otherwise, submit a job via the scheduler, or request and allocation
 
 2. **Create and activate a virtual environment**
 
-   Create a virtual environment that contains all the requisite Python applications to get a Jupyter Notebook up-and-running. The `virtualenv` tool allows you to easily install, and manage, Python packages.
+   Create a virtual environment that contains all the requisite Python modules to get a Jupyter Notebook up-and-running. The `virtualenv` tool allows you to easily install, and manage, Python packages.
+
+   We will be using TensorFlow in the demo. There are some compatibility issues between TensorFlow and some other packages when using the standard environment on Compute Canada. To address this, we will load Python 3.6.  🤷
 
    - Go to your home directory. The `cd` command takes you to your home directory.
-   - Optional: load Python 3.7 `module load python/3.7`
-   - Load the SciPy stack module: `module load scipy-stack/2020b`
-     - The `scipy-stack` module includes commonly used scientific computing and data science libraries in a one-stop-shop, like Numpy, Pandas, SciPy. You can read more about modules and how to use them on the CC [wiki page on the topic](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en).
+   - Load Python 3.6:  `module load python/3.6` 
+     - Before you create a virtual environment, make sure you have the proper version of Python selected.
      - Use the `module list` command to see which modules you currently have loaded in your environment. Use `module unload <module_name>` to unload a module.
    - Create the virtual environment in your home directory: `virtualenv ~/jupyter1` 
-     - From now on, the`jupyter1` virtual environment will depend on loading the `scipy-stack/2020b` module first.
    - Activate the virtual environment you just created: `source ~/jupyter1/bin/activate`
      - "bin" folders, in Linux, contain ready to run  programs
      - To deactivate a virtual environment, use the command `deactivate`
 
+   > :bulb: **Tip:** If you are doing data exploration, you can use the `scipy-stack/2020b` module. It includes commonly used scientific computing and data science libraries in a one-stop-shop, like Numpy, Pandas, and SciPy. You can read more about modules and how to use them on the CC [wiki page on the topic](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en).
+
 3. **Install the python packages**
 
    Install the packages we need to open up a Jupyter notebook and do data analysis.
-   
-   * Install [scikit-learn](https://scikit-learn.org/stable/index.html): `pip install --no-index sklearn`
+
+   * While the `jupyter1` environment is active, upgrade the package manager, pip: `pip install --no-index --upgrade pip` You should always do this when setting up a new environment.
      
-     > :warning: **Warning:** Make sure you have the module `scipy-stack/2020b` loaded (via `module load scipy-stack/2020b` )
+   * Install basic data-science packages, scikit-learn, Pandas, Matplotlib: `pip install --no-index pandas scikit_learn matplotlib`
      
-        > :bulb: **Tip:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and not overload the login node.
+        > :bulb: **Tip:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and prevent compatibility issues.
      
-   * Install Jupyter Lab, which we'll use to run notebooks: `pip install --no-index jupyterlab`
-   
-   * Install TensorFlow 2.0 (we'll be using it in the notebook): `pip install --no-index tensorflow`
-   
+   * Install TensorFlow 2.0 and Jupyter Lab: `pip install --no-index tensorflow jupyterlab`
+
 4. **Create a script to launch Jupyter Lab** 
 
    Use nano to create a bash script that we'll call upon to open up a Jupyter Lab session.
@@ -87,9 +88,9 @@ The tutorial is based on:
        > :warning: **Warning:** Try not to allocate more than you need so that the resources can be efficiently used between users.
      
    * When you have the allocation, you should see something like this:
-   
+
      ![terminal_notebook](./images/terminal_notebook.png)
-   
+
 6. **SSH tunnel from your local computer into the Jupyter Notebook**
 
    The Jupyter Notebook is now running on the Compute Canada HPC. We need to "tunnel" into the HPC system and show the notebook on our local computer.
