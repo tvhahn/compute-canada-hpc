@@ -1,13 +1,13 @@
 # Running a Jupyter Notebook on Compute Canada
 
-In this tutorial we will learn how to get a Jupyter Notebook running on your local computer, *but* use Compute Canada to power the backend. Why do this? Well, you may have a large data set that requires significant amounts of RAM, storage, or processing power. You may also have a crappy computer...
+In this tutorial we will learn how to get a Jupyter Notebook running on your local computer, *but* use Compute Canada to power the back-end. Why do this? Well, you may have a large data set that requires significant amounts of RAM, storage, or processing power. You may also have a crappy computer...
 
 The tutorial is based on:
 
 - Compute Canada wiki page on Jupyter Notebook ([here](https://docs.computecanada.ca/wiki/JupyterNotebook))
 - Youtube video from Sharcnet ([here](https://youtu.be/5yCUDqAbBUk))
 
-
+**Why use a Jupyter Notebook?** It is a useful tool that is widely used in research, data-science, and software development. They are great for prototyping and trying out new ideas.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ The tutorial is based on:
 
    > :memo: **Note:** The Compute Canada (CC) HPC is run in a Linux environment. You interact with it using typed commands. CC has a useful Wiki introducing Linux ([here](https://docs.computecanada.ca/wiki/Linux_introduction)). There are also many good resources online, like this [command cheatsheat (pdf) from fosswire](https://files.fosswire.com/2007/08/fwunixref.pdf). SciNet has a course on "The Linux Shell" (see their [training page](https://support.scinet.utoronto.ca/education/browse.php)).
 
-   > :warning: **Warning:** Don't use the login node for computationally intensive tasks (you may get banned). The login node is for compilation and other tasks not expected to consume more than about 10 CPU-minutes and about 4 gigabytes of RAM. Otherwise, submit a job via the scheduler, or request and allocation
+   > :warning: **Warning:** Don't use the login node for computationally intensive tasks (you may get banned). The login node is for compilation and other tasks not expected to consume more than about 10 CPU-minutes and about 4 gigabytes of RAM. Otherwise, submit a job via the scheduler, or request an allocation.
 
 2. **Create and activate a virtual environment**
 
@@ -44,15 +44,15 @@ The tutorial is based on:
      - "bin" folders, in Linux, contain ready to run  programs
      - To deactivate a virtual environment, use the command `deactivate`
 
-   > :bulb: **Tip:** If you are doing data exploration, you can use the `scipy-stack/2020b` module. It includes commonly used scientific computing and data science libraries in a one-stop-shop, like Numpy, Pandas, and SciPy. You can read more about modules and how to use them on the CC [wiki page on the topic](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en).
+   > :bulb: **Tip:** If you are just doing data exploration, you can use the `scipy-stack/2020b` module. It includes commonly used scientific computing and data science libraries in a one-stop-shop, like Numpy, Pandas, and SciPy. You can read more about modules and how to use them on the CC [wiki page on the topic](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en).
 
-3. **Install the python packages**
+3. **Install the Python packages**
 
    Install the packages we need to open up a Jupyter notebook and do data analysis.
 
    * While the `jupyter1` environment is active, upgrade the package manager, pip: `pip install --no-index --upgrade pip` You should always do this when setting up a new environment.
      
-   * Install basic data-science packages, scikit-learn, Pandas, Matplotlib: `pip install --no-index pandas scikit_learn matplotlib`
+   * Install basic data-science packages, scikit-learn, Pandas, Matplotlib: `pip install --no-index pandas scikit_learn matplotlib seaborn`
      
         > :bulb: **Tip:** Compute Canada has many common python packages already compiled (made into "wheels") on their system (see available [python wheels](https://docs.computecanada.ca/wiki/Available_Python_wheels)). These are installed with pip using the `--no-index` command. Installing the wheels from CC can save considerable time, and prevent compatibility issues.
      
@@ -60,9 +60,9 @@ The tutorial is based on:
 
 4. **Create a script to launch Jupyter Lab** 
 
-   Use nano to create a bash script that we'll call upon to open up a Jupyter Lab session.
+   Use nano (text editor in linux) to create a bash script that we'll call upon to open up a Jupyter Lab session.
 
-   * Create a script in your virtual environment, in the bin folder: `nano $VIRTUAL_ENV/bin/notebook.sh`
+   * Create a script in your virtual environment (make sure `jupyter1` is active), in the bin folder: `nano $VIRTUAL_ENV/bin/notebook.sh`
 
    * This opens up the nano text editor, so that we can create the bash script (see the [Youtube video](https://youtu.be/5yCUDqAbBUk?t=969) for more details):
 
@@ -79,8 +79,10 @@ The tutorial is based on:
 
 5. **Create an allocation to run Jupyter Lab**
 
+   While in your virtual environment, run the following:
+
    * ```
-     salloc --time=1:0:0 --ntasks=1 --cpus-per-task=2 --mem-per-cpu=1024M --account=def-profaccount srun $VIRTUAL_ENV/bin/notebook.sh
+     salloc --time=1:0:0 --ntasks=1 --cpus-per-task=4 --mem-per-cpu=2048M --account=def-profaccount srun $VIRTUAL_ENV/bin/notebook.sh
      ```
      
      * Allocate 1 hour for 1 task, using 2 cpus and 1024 MB of RAM/CPU. Allocated on the
@@ -110,15 +112,13 @@ The tutorial is based on:
 
 7. **Run Notebooks**
 
-   Now you can make and run notebooks! Notebooks are a great way to explore data, and prototype code. As an example, if you are doing deep learning with PyTorch, this would be a good workflow (from [pytorch-style guide](https://github.com/IgorSusmelj/pytorch-styleguide)):
+   Now you can make and run notebooks! Notebooks are a great way to explore data, and prototype code. As an example, if you are data science work, this would be a good workflow (from [pytorch-style guide](https://github.com/IgorSusmelj/pytorch-styleguide)):
 
    > 1. Start with a Jupyter notebook
    > 2. Explore the data. Prototype models.
    > 3. Build your classes/ methods inside cells of the notebook
    > 4. Move your code to python scripts
    > 5. Train / deploy on server (Compute Canada in our case)
->
-
 | **Jupyter Notebook** | **Python Scripts** |
 |----------------------|--------------------|
 | + Exploration | + Running longer jobs without interruption |
@@ -131,5 +131,5 @@ The tutorial is based on:
 
 > :bulb: **Tip:** Git is an important tool in modern software development. Start using it today! Get yourself a [github](https://github.com/) account. [Download git](https://git-scm.com/download/win) (if you're on Windows). Here's a simple git guide that I use almost every day: [git - the simple guide](http://rogerdudler.github.io/git-guide/)
 
-> :memo: **Note:* You can also run your IDE (interactive developer environment), such as VS Code, on the Compute Canada system. Same with Matlab!
+> :memo: **Note**: You can also run your IDE (interactive developer environment), such as VS Code, on the Compute Canada system. Same with Matlab!
 

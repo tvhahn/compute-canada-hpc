@@ -6,7 +6,7 @@
 #SBATCH --time=0-00:10      # time (DD-HH:MM)
 #SBATCH --output=%N-%j.out  # %N for node name, %j for jobID
 #SBATCH --mail-type=ALL               # Type of email notification- BEGIN,END,F$
-#SBATCH --mail-user=18tcvh@queensu.ca   # Email to which notifications will be $
+#SBATCH --mail-user=your_username@queensu.ca   # Email to which notifications will be $
 
 
 module load scipy-stack/2020b
