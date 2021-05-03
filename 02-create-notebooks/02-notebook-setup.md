@@ -37,6 +37,8 @@ The tutorial is based on:
    * Now clone the tutorial [Github repository](https://github.com/tvhahn/compute-canada-hpc). Type: `git clone https://github.com/tvhahn/compute-canada-hpc.git`
      * Git is already installed on the Compute Canada system (it comes by default in most linux distributions)
 
+   > :bulb: **Tip:** Git is an important tool in modern software development. Start using it today! Get yourself a [github](https://github.com/) account. [Download git](https://git-scm.com/download/win) (if you're on Windows). Here's a simple git guide that I use almost every day: [git - the simple guide](http://rogerdudler.github.io/git-guide/)
+
 3.  **Create and activate a virtual environment**
 
    Create a virtual environment that contains all the requisite Python modules to get a Jupyter Notebook up-and-running. The `virtualenv` tool allows you to easily install, and manage, Python packages.
@@ -136,9 +138,7 @@ The tutorial is based on:
 | - Can be interrupted (don't use for long training) | |
 | - Prone to errors and become a mess | |
 
-Start by downloading the 
-
-> :bulb: **Tip:** Git is an important tool in modern software development. Start using it today! Get yourself a [github](https://github.com/) account. [Download git](https://git-scm.com/download/win) (if you're on Windows). Here's a simple git guide that I use almost every day: [git - the simple guide](http://rogerdudler.github.io/git-guide/)
+If you've already cloned the repo, you can navigate into the `compute-canada-hpc` folder and open up the notebooks within it.
 
 > :memo: **Note**: You can also run your IDE (interactive developer environment), such as VS Code, on the Compute Canada system. Same with Matlab!
 
