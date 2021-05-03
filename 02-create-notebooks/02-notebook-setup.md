@@ -29,7 +29,15 @@ The tutorial is based on:
 
    > :warning: **Warning:** Don't use the login node for computationally intensive tasks (you may get banned). The login node is for compilation and other tasks not expected to consume more than about 10 CPU-minutes and about 4 gigabytes of RAM. Otherwise, submit a job via the scheduler, or request an allocation.
 
-2. **Create and activate a virtual environment**
+2. **Download Tutorial Files from GitHub**
+
+   We need the tutorial files. They contain  data we want to explore!
+
+   * Navigate to your projects folder. Something like: `cd projects/def-mechefsk/<your_username>`
+   * Now clone the tutorial [Github repository](https://github.com/tvhahn/compute-canada-hpc). Type: `git clone https://github.com/tvhahn/compute-canada-hpc.git`
+     * Git is already installed on the Compute Canada system (it comes by default in most linux distributions)
+
+3.  **Create and activate a virtual environment**
 
    Create a virtual environment that contains all the requisite Python modules to get a Jupyter Notebook up-and-running. The `virtualenv` tool allows you to easily install, and manage, Python packages.
 
@@ -46,7 +54,7 @@ The tutorial is based on:
 
    > :bulb: **Tip:** If you are just doing data exploration, you can use the `scipy-stack/2020b` module. It includes commonly used scientific computing and data science libraries in a one-stop-shop, like Numpy, Pandas, and SciPy. You can read more about modules and how to use them on the CC [wiki page on the topic](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en).
 
-3. **Install the Python packages**
+4. **Install the Python packages**
 
    Install the packages we need to open up a Jupyter notebook and do data analysis.
 
@@ -58,7 +66,7 @@ The tutorial is based on:
      
    * Install TensorFlow 2.0 and Jupyter Lab: `pip install --no-index tensorflow jupyterlab`
 
-4. **Create a script to launch Jupyter Lab** 
+5. **Create a script to launch Jupyter Lab** 
 
    Use nano (text editor in linux) to create a bash script that we'll call upon to open up a Jupyter Lab session.
 
@@ -77,7 +85,7 @@ The tutorial is based on:
    * Back in your home directory, change the user privileges of the `notebook.sh` that you just created (we'll allow the user, *u*, to execute, *x*, the file). This is needed so that we can run the script in the bin folder: `chmod u+x $VIRTUAL_ENV/bin/notebook.sh `
    * Now install the Lmod: `pip install --no-index jupyterlmod`
 
-5. **Create an allocation to run Jupyter Lab**
+6. **Create an allocation to run Jupyter Lab**
 
    While in your virtual environment, run the following:
 
@@ -93,7 +101,7 @@ The tutorial is based on:
 
      ![terminal_notebook](./images/terminal_notebook.png)
 
-6. **SSH tunnel from your local computer into the Jupyter Notebook**
+7. **SSH tunnel from your local computer into the Jupyter Notebook**
 
    The Jupyter Notebook is now running on the Compute Canada HPC. We need to "tunnel" into the HPC system and show the notebook on our local computer.
 
@@ -110,7 +118,7 @@ The tutorial is based on:
 
    * Then on local browser, copy the link to Jupyter lab with the access token, like: `http://localhost:8888/?token=<token>`. Or, you can copy the link from your terminal (or click it if your terminal client allows you to).
 
-7. **Run Notebooks**
+8. **Run Notebooks**
 
    Now you can make and run notebooks! Notebooks are a great way to explore data, and prototype code. As an example, if you are data science work, this would be a good workflow (from [pytorch-style guide](https://github.com/IgorSusmelj/pytorch-styleguide)):
 
@@ -119,6 +127,7 @@ The tutorial is based on:
    > 3. Build your classes/ methods inside cells of the notebook
    > 4. Move your code to python scripts
    > 5. Train / deploy on server (Compute Canada in our case)
+
 | **Jupyter Notebook** | **Python Scripts** |
 |----------------------|--------------------|
 | + Exploration | + Running longer jobs without interruption |
@@ -127,7 +136,7 @@ The tutorial is based on:
 | - Can be interrupted (don't use for long training) | |
 | - Prone to errors and become a mess | |
 
-   
+Start by downloading the 
 
 > :bulb: **Tip:** Git is an important tool in modern software development. Start using it today! Get yourself a [github](https://github.com/) account. [Download git](https://git-scm.com/download/win) (if you're on Windows). Here's a simple git guide that I use almost every day: [git - the simple guide](http://rogerdudler.github.io/git-guide/)
 

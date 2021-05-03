@@ -9,7 +9,7 @@
 #SBATCH --mail-user=your_username@queensu.ca   # Email to which notifications will be $
 
 
-module load scipy-stack/2020b
+module load python/3.6
 source ~/jupyter1/bin/activate
 
 python train_model_tcn.py
