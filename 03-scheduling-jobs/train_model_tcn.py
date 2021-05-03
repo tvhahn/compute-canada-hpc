@@ -11,7 +11,6 @@ from tensorflow import keras
 
 from sklearn.model_selection import ParameterSampler
 
-
 from scipy.stats import randint as sp_randint
 from scipy.stats import uniform
 import traceback
@@ -20,35 +19,17 @@ import traceback
 import threshold
 from tcn import TCN
 
-# folder_raw_data = Path(
-#     "data/raw/"
-# )  # raw data folder that holds the .zip .mat files for milling data
-
 folder_processed_data = Path("data/processed/")  # processed data folder
 
 # extract zip file of processed data
 with zipfile.ZipFile(folder_processed_data / 'data_processed.zip', 'r') as zip_ref:
     zip_ref.extractall(folder_processed_data)
 
-# folder_models = Path("models/")
-# Path("models/").mkdir(parents=True, exist_ok=True)
-# folder_models = Path("models/")  # folder for saved models
+# set location to save trained models
 home_dir = Path.home()
 Path(home_dir / 'scratch/models').mkdir(parents=True, exist_ok=True)
 folder_models = home_dir / 'scratch/models'
 
-# current_dir = Path.cwd()
-# # processed_data = current_dir.parent.parent / 'data/processed/2020_05_20_xy_54_checkfluid'
-# processed_data = current_dir.parent.parent / 'data/processed/2016_06_18_milling_mash_stride64'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_split_on_cutno_label1_2_removed_stride512_80pct_val_test'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_split_on_cutno_label1_2_removed_stride512_66pct_val_test'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_split_on_cutno_label1_2_removed_stride512'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_split_on_cutno_label1_2_removed_stride128'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_split_on_cutno_label1_2_removed'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_erroneous_removed'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_mashed_sliding_window'
-# # processed_data = current_dir.parent.parent / 'data/processed/scale_0_to_1_mashed'
-# # processed_data = Path('/home/tim/Documents/milling/data/processed/scale_0-1')
 
 ####################### HELPER FUNCTIONS ###########################
 # simple functions used in the data prep
@@ -473,7 +454,7 @@ for i, params in enumerate(p_bvae):
         results = pd.DataFrame(history.history)
         epochs_trained = len(results)
         results["epochs_trained"] = epochs_trained
-        # results = list(results[results['loss']==results['loss'].min()].to_numpy()) # only keep the top result, that is, the lowest val_loss
+
         results = list(
             results[results["val_loss"] == results["val_loss"].min()].to_numpy()
         )  # only keep the top result, that is, the lowest val_loss
@@ -525,7 +506,7 @@ for i, params in enumerate(p_bvae):
 
         df_all = df_all.append(df, sort=False)
 
-        df_all.to_csv("results_interim_{}.csv".format(model_save_folder))
+        df_all.to_csv(folder_models / "results_interim_{}.csv".format(model_save_folder))
 
     except Exception as e:
         print(e)
