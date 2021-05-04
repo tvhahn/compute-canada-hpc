@@ -85,8 +85,7 @@ The tutorial is based on:
        Press ctrl-O to save, ctrl-X to exit. 
 
    * Back in your home directory, change the user privileges of the `notebook.sh` that you just created (we'll allow the user, *u*, to execute, *x*, the file). This is needed so that we can run the script in the bin folder: `chmod u+x $VIRTUAL_ENV/bin/notebook.sh `
-   * Now install the Lmod: `pip install --no-index jupyterlmod`
-
+   
 6. **Create an allocation to run Jupyter Lab**
 
    While in your virtual environment, run the following:
@@ -95,7 +94,7 @@ The tutorial is based on:
      salloc --time=1:0:0 --ntasks=1 --cpus-per-task=4 --mem-per-cpu=2048M --account=def-profaccount srun $VIRTUAL_ENV/bin/notebook.sh
      ```
      
-     * Allocate 1 hour for 1 task, using 2 cpus and 1024 MB of RAM/CPU. Allocated on the
+     * Allocate 1 hour for 1 task, using 4 cpus and 2048 MB of RAM/CPU. Allocated on the
      
        > :warning: **Warning:** Try not to allocate more than you need so that the resources can be efficiently used between users.
      
