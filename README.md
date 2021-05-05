@@ -1,11 +1,11 @@
 # Compute Canada Tutorials
-Beginner tutorials and for help on Compute Canada's High Performance Computer.
+New to Compute Canada and high performance computing? Here are some tutorials to get you started.
 
 
 
 ## Contents
 
 
-   * [Getting Started](01-getting-started/01-getting-started.md) - Start with the basics of Compute Canada HPC system.
-   * [Create a Jupyter Notebook](02-create-notebooks/02-notebook-setup.md) - Learn to run a Jupyter Notebook on your local computer, with a HPC backend.
-   * [Scheduling Jobs](03-scheduling-jobs/03-scheduling-jobs.md) - Schedule jobs on the HPC. 
+   * [Learning Resources](01-learning-resources/01-resources.md) - Useful resources to help you on your HPC journey.
+   * [Create a Jupyter Notebook](02-create-notebooks/02-notebook-setup.md) - Totorial on how to run a Jupyter Notebook on your local computer, with a HPC backend.
+   * [Scheduling Jobs](03-scheduling-jobs/03-scheduling-jobs.md) - Tutorial on scheduling jobs on the HPC. 
